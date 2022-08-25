@@ -32,16 +32,17 @@ class MainActivity : ComponentActivity() {
         val constraintSet = ConstraintSet {
             val firstBox = createRefFor("First")
             val secondBox = createRefFor("Second")
+            val guideline = createGuidelineFromStart(0.7F)
 
             constrain(firstBox) {
                 start.linkTo(parent.start)
-                end.linkTo(parent.end)
+                end.linkTo(guideline)
                 top.linkTo(parent.top)
                 bottom.linkTo(secondBox.top)
             }
             constrain(secondBox) {
                 start.linkTo(parent.start)
-                end.linkTo(parent.end)
+                end.linkTo(guideline)
                 top.linkTo(firstBox.bottom)
                 bottom.linkTo(parent.bottom)
             }
