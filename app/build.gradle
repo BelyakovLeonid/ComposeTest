@@ -65,4 +65,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
     // UI Tests
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.2.1'
+    // Constraint in Compose
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 }
