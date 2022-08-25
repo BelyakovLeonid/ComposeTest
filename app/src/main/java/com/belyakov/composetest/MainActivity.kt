@@ -3,71 +3,35 @@ package com.belyakov.composetest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import kotlin.random.Random
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            Test()
-        }
-    }
-}
-
-@Composable
-fun ColorBox(
-    modifier: Modifier = Modifier,
-    onClick: (Color) -> Unit
-) {
-    Box(
-        modifier = modifier
-            .background(Color.Blue)
-            .clickable {
-                onClick(
-                    Color(
-                        Random.nextFloat(),
-                        Random.nextFloat(),
-                        Random.nextFloat(),
-                        1F
-                    )
-                )
+            LazyColumn {
+                itemsIndexed(listOf("one", "two", "three", "four")) { index, item ->
+                    Box(
+                        modifier = Modifier
+                            .clickable { }
+                            .fillMaxWidth()
+                            .height(100.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "$item #$index")
+                    }
+                }
             }
-    )
-}
-
-@Preview
-@Composable
-fun Test() {
-    val state = remember {
-        mutableStateOf(Color.Yellow)
-    }
-
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        ColorBox(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1F)
-        ) { newColor ->
-            state.value = newColor
         }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(state.value)
-                .weight(1F)
-        )
     }
 }
