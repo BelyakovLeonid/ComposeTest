@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ComposeTest</string>
+    <string name="button_exp">Show less</string>
+    <string name="button_col">Show more</string>
+
+    <string name="onboarding_title">Welcome to my\nverynew Compose app!</string>
+    <string name="onboarding_button">Open list</string>
 </resources>
